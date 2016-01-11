@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "budo --live example/index.js -- -t glslify"
+    "start": "budo --live example/index.js -- -t glslify",
+    "build": "browserify -t glslify example/index.js > example/bundle.js"
   },
   "keywords": [
     "stackgl",
@@ -18,6 +19,7 @@
   "author": "Rye Terrell <wwwtyro@gmail.com> (http://wwwtyro.github.io)",
   "license": "Unlicense",
   "devDependencies": {
+    "browserify": "^13.0.0",
     "budo": "^7.1.0",
     "gl-geometry": "^2.0.0",
     "gl-shader": "^4.1.1",
