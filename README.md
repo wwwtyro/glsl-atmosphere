@@ -2,6 +2,10 @@
 
 Renders sky colors with Rayleigh and Mie scattering.
 
+<p align='center'>
+    <img src="https://raw.githubusercontent.com/wwwtyro/glsl-atmosphere/master/images/atmosphere.png" width="100%">
+</p>
+
 ## Install
 
 ```sh
