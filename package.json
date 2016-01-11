@@ -1,0 +1,30 @@
+{
+  "name": "glsl-atmosphere",
+  "version": "1.0.0",
+  "description": "Renders sky colors with Rayleigh and Mie scattering.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "budo --live example/index.js -- -t glslify"
+  },
+  "keywords": [
+    "stackgl",
+    "glsl",
+    "rayleigh",
+    "mie",
+    "atmosphere",
+    "sky"
+  ],
+  "author": "Rye Terrell <wwwtyro@gmail.com> (http://wwwtyro.github.io)",
+  "license": "Unlicense",
+  "devDependencies": {
+    "budo": "^7.1.0",
+    "gl-geometry": "^2.0.0",
+    "gl-shader": "^4.1.1",
+    "glslify": "^5.0.1"
+  },
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {}
+}
