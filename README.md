@@ -27,15 +27,10 @@ var quad = Geometry(gl)
         -1,  1, -1
     ]);
 
-function render() {
-    program.bind();
-    quad.bind(program);
-    program.uniforms.uSunPos = [0, Math.cos(theta) * 0.3 + 0.2, -1];
-    quad.draw();
-    requestAnimationFrame(render);
-}
-
-render();
+program.bind();
+quad.bind(program);
+program.uniforms.uSunPos = [0, 0.1, -1];
+quad.draw();
 ```
 
 ### Vertex Shader

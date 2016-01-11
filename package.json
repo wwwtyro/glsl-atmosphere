@@ -26,5 +26,13 @@
   "directories": {
     "example": "example"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwwtyro/glsl-atmosphere.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wwwtyro/glsl-atmosphere/issues"
+  },
+  "homepage": "https://github.com/wwwtyro/glsl-atmosphere#readme"
 }
