@@ -6,6 +6,8 @@ Renders sky colors with Rayleigh and Mie scattering.
     <img src="https://raw.githubusercontent.com/wwwtyro/glsl-atmosphere/master/images/atmosphere.png" width="100%">
 </p>
 
+[Demo](http://wwwtyro.github.io/glsl-atmosphere/)
+
 ## Install
 
 ```sh
