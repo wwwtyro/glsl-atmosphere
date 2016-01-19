@@ -23,7 +23,7 @@ vec3 atmosphere(vec3 r, vec3 r0, vec3 pSun, float iSun, float rPlanet, float rAt
     // Initialize the primary ray time.
     float iTime = 0.0;
 
-    // Initialize accumulators for Rayleight and Mie scattering.
+    // Initialize accumulators for Rayleigh and Mie scattering.
     vec3 totalRlh = vec3(0,0,0);
     vec3 totalMie = vec3(0,0,0);
 
