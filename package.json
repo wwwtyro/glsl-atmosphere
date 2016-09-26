@@ -1,6 +1,6 @@
 {
   "name": "glsl-atmosphere",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Renders sky colors with Rayleigh and Mie scattering.",
   "main": "index.js",
   "scripts": {
