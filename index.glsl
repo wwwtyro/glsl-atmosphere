@@ -24,8 +24,51 @@ vec3 atmosphere(vec3 r, vec3 r0, vec3 pSun, float iSun, float rPlanet, float rAt
 
     // Calculate the step size of the primary ray.
     vec2 p = rsi(r0, r, rAtmos);
-    if (p.x > p.y) return vec3(0,0,0);
-    p.y = min(p.y, rsi(r0, r, rPlanet).x);
+
+    // There are a few cases to distinguish:
+    // 0a: The ray starts outside the atmosphere and does not intersect it.
+    //     Return 0.
+    // 0b: The ray starts inside the planet. Return 0.
+    // 0c: The ray intersects the atmosphere at t < 0. Return 0.
+    //
+    // If isect_planet.y < 0, set isect_planet.y = 1e16 and
+    // isect_planet.x = -1e16 to treat it as non-intersection.
+    //
+    // 1: The ray starts outside the atmosphere and intersects it at t > 0,
+    //    but does not intersect the planet.
+    //    Ray from p.x to p.y.
+    // 2: The ray starts outside the atmosphere and intersects it at t > 0 and
+    //    intersects the planet.
+    //    Ray from p.x to isect_planet.x.
+    // 3: The ray starts inside the atmosphere and does not intersect the
+    //    planet.
+    //    Ray from 0 to p.y.
+    // 4: The ray starts inside the atmosphere and intersects the planet at
+    //    t > 0.
+    //    Ray from 0 to isect_planet.x.
+
+    // Ray does not intersect the atmosphere (on the way forward) at all;
+    // exit early.
+    if (p.x > p.y || p.y < 0) return vec3(0,0,0);
+
+    vec2 isect_planet = rsi(r0, r, rPlanet);
+
+    // Ray starts inside the planet -> return 0
+    if (isect_planet.x < 0 && isect_planet.y >= 0) {
+        return vec3(0);
+    }
+
+    // Treat intersection of the planet in negative t as if the planet had not
+    // been intersected at all.
+    bool planet_intersected = (isect_planet.x < isect_planet.y && isect_planet.x > 0);
+
+    // always start atmosphere ray at viewpoint if we start inside atmosphere
+    p.x = max(p.x, 0);
+
+    // if the planet is intersected, set the end of the ray to the planet
+    // surface.
+    p.y = planet_intersected ? isect_planet.y : p.y;
+
     float iStepSize = (p.y - p.x) / float(iSteps);
 
     // Initialize the primary ray time.
